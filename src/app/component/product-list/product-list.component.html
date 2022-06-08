@@ -44,7 +44,9 @@
                      <td>{{product.productCode | lowercase}}</td>   
                      <td>{{product.releaseDate}}</td>   
                      <td>{{product.price | currency: 'USD': 'symbol': '1.2-2'}}</td>   
-                     <td>{{product.starRarting}}</td>   
+                     <td>
+                         <app-star [rating]="product.startRating"></app-star>
+                    </td>   
                     </tr>
                 </tbody>
               </table>
