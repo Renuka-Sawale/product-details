@@ -19,7 +19,9 @@ export class ProductListComponent implements OnInit {
   set listFilter(value:string){
     this._listFilter = value;
     console.log('In setter:', value);
-    this.filteredProducts = this.performFilter(value)
+   // this.filteredProducts = this.performFilter(value)
+    this.products = this.performFilter(value)
+
   }
 
   filteredProducts: any[] = []
@@ -49,7 +51,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     //this._listFilter= 'cart';
-    this.filteredProducts= this.products
+    //this.filteredProducts= this.products
   }
 
   performFilter(filterBy:string): any[]{
