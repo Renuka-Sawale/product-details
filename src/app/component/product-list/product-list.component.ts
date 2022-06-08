@@ -56,7 +56,7 @@ export class ProductListComponent implements OnInit {
     return this.products.filter((products:any) =>
     products.productName.toLowerCase().includes(filterBy));
   }
-
+//demo comment added
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
