@@ -48,7 +48,8 @@ export class ProductListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this._listFilter= 'cart';
+    //this._listFilter= 'cart';
+    this.filteredProducts= this.products
   }
 
   performFilter(filterBy:string): any[]{
@@ -56,7 +57,7 @@ export class ProductListComponent implements OnInit {
     return this.products.filter((products:any) =>
     products.productName.toLowerCase().includes(filterBy));
   }
-//demo comment added
+
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
