@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError } from 'rxjs';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,6 +14,7 @@ export class ProductListComponent implements OnInit {
   //listFilter: string = 'cart';
 
   private _listFilter: string = '';
+  pageTitle: any;
   get listFilter(): string {
     return this._listFilter;
   }
@@ -25,33 +27,14 @@ export class ProductListComponent implements OnInit {
   }
 
   filteredProducts: any[] = []
-  products:any[] = [{
-    "productId": 2,
-    "productName": "Garden Cart",
-    "productCode": "GDN-0023",
-    "releaseDate": "March 18, 2021",
-    "description": "15 gallon capacity rolling garden",
-    "price": 32.99,
-    "starRarting": "4.2",
-    "imageUrl": "assets/images/garden_cart.png"
-  },
-  {
-    "productId": 5,
-    "productName": "Hammer",
-    "productCode": "TBX-0048",
-    "releaseDate": "May 21, 2021",
-    "description": "curved claw steel hammer",
-    "price": 9.9,
-    "starRarting": "4.8",
-    "imageUrl": "assets/images/hammer.png"
-  }
-  ];
+  products: any[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     //this._listFilter= 'cart';
     //this.filteredProducts= this.products
+    this.products = this.productService.getProducts();
   }
 
   performFilter(filterBy:string): any[]{
@@ -62,6 +45,11 @@ export class ProductListComponent implements OnInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  onRatingClicked(message:string): void {
+    this.pageTitle = 'Product List: ' + message;
+
   }
 
 }
